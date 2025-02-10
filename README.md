@@ -17,5 +17,5 @@ A simple and dynamic **Ecommerce Website** that fetches products from the [FakeS
 - **FakeStore API** – Fetching product data  
 
 ## 📺 Demo Video  
-Google Drive Video Link: https://drive.google.com/file/d/1bILuQ4jaR7lKVCi8taXF_MFyRy-HJLQI/view?usp=drive_link  
+Google Drive Video Link: https://drive.google.com/file/d/1H071Cb5VSH-xKyLDS1djXG9QK4nTiY0d/view?usp=drive_link
 
