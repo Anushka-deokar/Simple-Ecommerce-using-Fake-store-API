@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .cart-container {
+            width: 90%;
+            margin: auto;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cart-item {
+            flex-basis: 30%;
+            box-shadow: 0px 0px 10px 2px #ccc;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-item img {
+            width: 100%;
+            height: 200px;
+        }
+
+        .cart-item h3,
+        .cart-item p {
+            padding: 10px;
+        }
+
+        .removeFromCart {
+            padding: 10px;
+            background: #ff0000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .removeFromCart:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>My Cart</h2>
+        <a href="index.html">🏠 Home</a>
+    </div>
+
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <div class="cart-items"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let cartItemsDiv = document.querySelector(".cart-items");
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            function displayCart() {
+                cartItemsDiv.innerHTML = "";
+                cart.forEach((product, index) => {
+                    cartItemsDiv.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${product.image}" alt="">
+                            <h3>${product.title}</h3>
+                            <p>Price: Rs. ${product.price}</p>
+                            <button class="removeFromCart" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    `;
+                });
+            }
+
+            window.removeFromCart = function (index) {
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCart();
+            }
+
+            displayCart();
+        });
+    </script>
+
+</body>
+
+</html>
